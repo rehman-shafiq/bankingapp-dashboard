@@ -128,8 +128,8 @@
             <nav class="nav flex-column">
                 <a class="nav-link active" href="#"><i class="bi bi-house me-2"></i>Dashboard</a>
                 <a class="nav-link" href="{{ route('account.view') }}"><i class="bi bi-credit-card me-2"></i>Accounts</a>
-                <a class="nav-link" href="#"><i class="bi bi-arrow-left-right me-2"></i>Transfers</a>
-                <a class="nav-link" href="#"><i class="bi bi-file-earmark me-2"></i>Statements</a>
+                <a class="nav-link" href="{{ route('transfer.view') }}"><i class="bi bi-arrow-left-right me-2"></i>Transfers</a>
+                <a class="nav-link"  href="{{ route('statements.view') }}"><i class="bi bi-file-earmark me-2"></i>Statements</a>
                 <a class="nav-link" href="{{ route('setting.view') }}"><i class="bi bi-gear me-2"></i>Settings</a>
             </nav>
 
@@ -244,12 +244,12 @@
                     <div class="col-12">
                         <h6 class="mb-3">Quick Actions</h6>
                         <div class="d-flex gap-2 flex-wrap">
-                            <button class="btn btn-action"><i class="bi bi-arrow-left-right me-2"></i>Send
-                                Money</button>
-                            <button class="btn btn-action"><i class="bi bi-arrow-down me-2"></i>Request Money</button>
-                            <button class="btn btn-action"><i class="bi bi-credit-card me-2"></i>Add Card</button>
-                            <button class="btn btn-action"><i class="bi bi-file-earmark-text me-2"></i>View
-                                Statement</button>
+                            <a href="{{ route('transfer.view') }}" class="btn btn-action"><i class="bi bi-arrow-left-right me-2"></i>Send
+                                Money</a>
+                            <a href="{{ route('request.money.view') }}" class="btn btn-action"><i class="bi bi-arrow-down me-2"></i>Request Money</a>
+                            <a href="{{ route('add.card.view') }}" class="btn btn-action"><i class="bi bi-credit-card me-2"></i>Add Card</a>
+                            <a href="{{ route('statements.view') }}" class="btn btn-action"><i class="bi bi-file-earmark-text me-2"></i>View
+                                Statement</a>
                         </div>
                     </div>
                 </div>
