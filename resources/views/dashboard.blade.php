@@ -114,8 +114,8 @@
 
 <body>
     <div class="d-flex h-100">
-        <!-- Sidebar -->
-        <div class="sidebar col-lg-3 col-xl-2">
+        <!-- Sidebar for large screens -->
+        <div class="sidebar col-lg-3 col-xl-2 d-none d-lg-block">
             <div class="px-3 mb-4">
                 <div class="d-flex align-items-center gap-2">
                     <div
@@ -127,7 +127,7 @@
 
             <nav class="nav flex-column">
                 <a class="nav-link active" href="#"><i class="bi bi-house me-2"></i>Dashboard</a>
-                <a class="nav-link" href="#"><i class="bi bi-credit-card me-2"></i>Accounts</a>
+                <a class="nav-link" href="{{ route('account.view') }}"><i class="bi bi-credit-card me-2"></i>Accounts</a>
                 <a class="nav-link" href="#"><i class="bi bi-arrow-left-right me-2"></i>Transfers</a>
                 <a class="nav-link" href="#"><i class="bi bi-file-earmark me-2"></i>Statements</a>
                 <a class="nav-link" href="{{ route('setting.view') }}"><i class="bi bi-gear me-2"></i>Settings</a>
@@ -140,17 +140,27 @@
             </div>
         </div>
 
+        <!-- Mobile menu placeholder (moved below header for small screens) -->
+
         <!-- Main Content -->
         <div class="flex-grow-1 d-flex flex-column">
             <!-- Header -->
             <div class="header-top">
                 <div class="row align-items-center">
-                    <div class="col">
-                        <h1 class="h4 mb-0">Welcome back, {{ auth()->user()->name ?? 'User' }}</h1>
-                        <small class="text-white-50">Here's your financial overview</small>
+                    <div class="col d-flex align-items-center">
+                        <div>
+                            <h1 class="h4 mb-0">Welcome back, {{ auth()->user()->name ?? 'User' }}</h1>
+                            <small class="text-white-50">Here's your financial overview</small>
+                        </div>
                     </div>
-                    <div class="col-auto">
+                    <div class="col-auto d-flex align-items-center">
                         <button class="btn btn-outline-light btn-sm me-2"><i class="bi bi-bell"></i></button>
+
+                        <!-- Mobile menu toggle moved to the right, next to profile -->
+                        <button class="btn btn-outline-light btn-sm d-lg-none me-2" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu" aria-expanded="false" aria-controls="mobileMenu" title="Menu">
+                            <i class="bi bi-list"></i>
+                        </button>
+
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-outline-light btn-sm dropdown-toggle"
                                 data-bs-toggle="dropdown">
@@ -164,6 +174,25 @@
                                 </li>
                                 <li><a class="dropdown-item" href="{{ route('signin.view') }}">Sign out</a></li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile menu bar (collapse) for small screens -->
+            <div class="d-lg-none w-100">
+                <div class="collapse" id="mobileMenu">
+                    <div class="card card-pro p-2 mb-3" style="background: linear-gradient(120deg, var(--bg-1) 0%, var(--bg-2) 60%); border:none;">
+                        <nav class="nav flex-column px-1">
+                            <a class="nav-link active" href="#"><i class="bi bi-house me-2"></i>Dashboard</a>
+                            <a class="nav-link" href="{{ route('account.view') }}"><i class="bi bi-credit-card me-2"></i>Accounts</a>
+                            <a class="nav-link" href="#"><i class="bi bi-arrow-left-right me-2"></i>Transfers</a>
+                            <a class="nav-link" href="#"><i class="bi bi-file-earmark me-2"></i>Statements</a>
+                            <a class="nav-link" href="{{ route('setting.view') }}"><i class="bi bi-gear me-2"></i>Settings</a>
+                        </nav>
+                        <hr style="border-top-color:rgba(255,255,255,0.04)">
+                        <div class="px-1">
+                            <a href="{{ route('signin.view') }}" class="btn btn-outline-light btn-sm w-100"><i class="bi bi-box-arrow-left me-2"></i>Sign out</a>
                         </div>
                     </div>
                 </div>
