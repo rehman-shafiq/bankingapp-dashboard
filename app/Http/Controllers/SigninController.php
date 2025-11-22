@@ -14,20 +14,30 @@ class SigninController extends Controller
 
   public function signinaction():RedirectResponse
    {
-        $validatedData = request()->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:8|max:16',
+        $validated = request()->validate([
+            'login' => ['required','string'],
+            'password' => ['required','string','min:8','max:16'],
         ]);
 
-        if (Auth::attempt($validatedData)) {
+        $login = trim($validated['login']);
+        $password = $validated['password'];
 
-            Auth::login(Auth::user());
+        // Determine if login is an email or phone number
+        if (filter_var($login, FILTER_VALIDATE_EMAIL)) {
+            $credentials = ['email' => $login, 'password' => $password];
+        } else {
+            // normalize phone number to digits only
+            $phone = preg_replace('/\D+/', '', $login);
+            $credentials = ['phone_number' => $phone, 'password' => $password];
+        }
 
+        if (Auth::attempt($credentials, request()->boolean('remember'))) {
+            request()->session()->regenerate();
             return redirect()->route('dashboard.view');
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+            'login' => 'The provided credentials do not match our records.',
+        ])->onlyInput('login');
     }
 }

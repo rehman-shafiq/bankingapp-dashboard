@@ -74,7 +74,7 @@
             color: rgba(255, 255, 255, 0.85);
         }
 
-     .form-control::placeholder {
+        .form-control::placeholder {
             color: rgba(155, 154, 154, 0.85);
             opacity: 1;
         }
@@ -85,6 +85,18 @@
 
         .form-control::-ms-input-placeholder {
             color: rgba(87, 87, 87, 0.85);
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+            /* Firefox */
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            /* Chrome, Safari, Edge */
+            margin: 0;
         }
     </style>
 </head>
@@ -130,6 +142,15 @@
                                         class="form-control form-control-lg bg-transparent text-white"
                                         placeholder="you@company.com" required>
                                     @error('email')
+                                        <div class="text-danger small mt-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-12">
+                                    <label for="PhoneNumber" class="form-label small text-white-50">Phone Number</label>
+                                    <input id="phone_number" name="phone_number" type="number"
+                                        class="form-control form-control-lg bg-transparent text-white"
+                                        placeholder="+92XXXXXXXXX" required>
+                                    @error('phone_number')
                                         <div class="text-danger small mt-1">{{ $message }}</div>
                                     @enderror
                                 </div>

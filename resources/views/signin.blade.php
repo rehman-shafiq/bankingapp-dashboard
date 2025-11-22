@@ -105,14 +105,14 @@
                             <div class="alert alert-success">{{ session('status') }}</div>
                         @endif
 
-                        <form method="GET" action="{{ route('signin.action') }}" class="mt-3">
+                        <form method="POST" action="{{ route('signin.action') }}" class="mt-3">
                             @csrf
                             <div class="mb-3">
-                                <label for="email" class="form-label small text-white-50">Email address</label>
-                                <input id="email" type="email" name="email" value="{{ old('email') }}" required
+                                <label for="login" class="form-label small text-white-50">Email or phone</label>
+                                <input id="login" type="text" name="login" value="{{ old('login') }}" required
                                     autofocus class="form-control form-control-lg bg-transparent text-white"
-                                    placeholder="you@company.com">
-                                @error('email')
+                                    placeholder="Enter Email or phone">
+                                @error('login')
                                     <div class="text-danger small mt-1">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -139,7 +139,7 @@
 
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-lg btn-gold"><i
-                                        class="bi bi-box-arrow-in-right me-2"></i> Sign In</button>
+                                    class="bi bi-box-arrow-in-right me-2"></i> Sign In</button>
                             </div>
                         </form>
 
