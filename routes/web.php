@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForgetPasswordController;
@@ -36,6 +37,7 @@ Route::controller(SettingController::class)->group(function () {
 });
 
 Route::post('/passwordchange', [ChangePasswordController::class, 'passwordchangeaction'])->name('password.change.action');
+Route::get('/accounts', [AccountsController::class, 'accountsView'])->name('account.view');
 
 Route::get('/posts', [PostController::class, 'index']);
 Route::post('/posts', [PostController::class, 'store']);

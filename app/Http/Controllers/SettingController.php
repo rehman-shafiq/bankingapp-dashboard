@@ -30,11 +30,8 @@ class SettingController extends Controller
         User::where('id', '=', Auth::user()->id)->update([
             'profile_picture' => pathinfo($filePath, PATHINFO_BASENAME),
         ]);
-
+        return redirect()->route('dashboard.view');
         return back()->with('status', 'Profile picture updated successfully.');
-
-
-        
     }
 
     public function updateProfileAction(): RedirectResponse
@@ -51,5 +48,4 @@ class SettingController extends Controller
 
         return back()->with('status', 'Profile updated successfully.');
     }
-
 }
