@@ -12,7 +12,8 @@ class PostController extends Controller
         return Post::all();
     }
 
-    public function store()
+
+/*******  ad49a04f-f14d-4766-aca6-4a3182e8dad3  *******/    public function store()
     {
         return post::create(request()->all());
     }

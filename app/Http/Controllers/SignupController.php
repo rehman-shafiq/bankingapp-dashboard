@@ -18,6 +18,7 @@ class SignupController extends Controller
         $validatedata =  request()->validate([
             'name' => 'required |string',
             'email' => 'required |email',
+            'phone_number' => 'required |numeric|digits_between:10,15',
             'password' => 'required |min:8|confirmed',
         ]);
         User::create($validatedata);

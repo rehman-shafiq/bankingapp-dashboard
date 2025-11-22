@@ -130,7 +130,7 @@
                 <a class="nav-link" href="#"><i class="bi bi-credit-card me-2"></i>Accounts</a>
                 <a class="nav-link" href="#"><i class="bi bi-arrow-left-right me-2"></i>Transfers</a>
                 <a class="nav-link" href="#"><i class="bi bi-file-earmark me-2"></i>Statements</a>
-                <a class="nav-link" href="#"><i class="bi bi-gear me-2"></i>Settings</a>
+                <a class="nav-link" href="{{ route('setting.view') }}"><i class="bi bi-gear me-2"></i>Settings</a>
             </nav>
 
             <hr style="border-top-color:rgba(255,255,255,0.04)">
@@ -158,7 +158,7 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li><a class="dropdown-item" href="{{ route('setting.view') }}">Settings</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
